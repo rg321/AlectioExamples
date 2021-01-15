@@ -1,0 +1,11 @@
+epochs: 300
+batch_size: 8
+cfg: 'cfg/c60_a30symmetric.cfg'
+img_size: 544
+LOG_DIR : "./log"
+checkpointsaveinterval: 20
+WEIGHTS_DIR : "./data/weights"
+EXPT_DIR: "./log"
+exp_name: "xview-detection"
+onprem: True
+weightsclear: True

@@ -1,0 +1,18 @@
+sample_payload: 'sample_payload.json'
+exp_name: "test"
+onprem: True    # set to True by default unless you give us permissions to view your data and model
+weights_clear: True
+EXPT_DIR : "./log" # will contain all experiment related checkpoints and other logs
+DATA_DIR : "./data"
+TRAIN_DATA_DIR : "./data/images/train"
+TEST_DATA_DIR : "./data/images/test"
+WEIGHTS_DIR : "./weights"
+
+### TRAIN PARAMS ###
+train_epochs: 1
+batch_size: 16
+lr: 1e-2
+weight_decay: 1e-2
+accumulated_batches: 4
+best_mAP: 0.0
+ckpt_save_interval: 1

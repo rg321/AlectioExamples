@@ -1,0 +1,9 @@
+sample_payload: 'sample_payload.json'
+EXPT_DIR : "./log"
+DATA_DIR : "./data"
+WEIGHTS_DIR : "./weights"
+exp_name: "sentiment-analysis"
+
+### TRAIN FUNCTION ARGS ###
+train_epochs: 1
+batch_size: 64

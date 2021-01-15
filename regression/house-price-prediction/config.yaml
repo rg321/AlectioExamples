@@ -1,0 +1,23 @@
+sample_payload: 'sample_payload.json'
+OUTPUT_DIRECTORY : "./outputs/"
+MODEL_DIRECTORY : "./models/"
+DATA_DIR : "./data/"
+LABEL_DIRECTORY : "./data/"
+WEIGHTS_DIR : "./models"
+exp_name: "House-price-prediction"
+
+
+
+### TRAIN FUNCTION ARGS ###
+train_epochs : 5
+SAVE_PER_EPOCH:2
+NUM_STEPS: 1000
+MAX_EPOCH : 2
+BATCH_SIZE: 64
+FOLDS : [1]
+DISPLAY_STEP: 100
+STOPPING_PATIENCE : 32
+LR_PATIENCE : 16
+INITIAL_LR : 0.1
+VAL_PERCENT : 0.2
+

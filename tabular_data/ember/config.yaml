@@ -1,0 +1,7 @@
+sample_payload: 'sample_payload.json'
+DATA_DIR : "./data/"
+EXPT_DIR : "./log"
+TEST_SIZE : 25000
+TRAIN_SIZE : 100000
+exp_name: "Ember"
+

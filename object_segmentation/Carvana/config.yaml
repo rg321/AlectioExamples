@@ -1,0 +1,25 @@
+SAMPLE_PAYLOAD: 'sample_payload.json'
+EXPT_DIR : "outputs/"
+DATA_DIR : "data/"
+MODEL_DIRECTORY : "./models"
+TRAINIMAGEDATA_DIR : "data/imgs/train/"
+TRAINLABEL_DIRECTORY : "data/masks/train_masks/"
+VALIMAGEDATA_DIR : "data/imgs/val/"
+VALLABEL_DIRECTORY : "data/masks/val_masks/"
+TESTIMAGEDATA_DIR : "data/imgs/val/"
+TESTLABEL_DIRECTORY : "data/masks/val_masks/"
+WEIGHTS_DIR : "checkpoints/"
+EXP_NAME: "Deepweeds"
+
+
+
+### TRAIN FUNCTION ARGS ###
+train_epochs: 5
+SAVE_PER_EPOCH : 2
+RAW_IMG_SIZE : (1918, 1280)
+IMG_SIZE : (1918, 1280)
+INPUT_SHAPE : (IMG_SIZE[0], IMG_SIZE[1], 3)
+IMG_SCALE : 0.5
+BATCH_SIZE: 1
+INITIAL_LR : 0.1
+VAL_PERCENT : 0.1

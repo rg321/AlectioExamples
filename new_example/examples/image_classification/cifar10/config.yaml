@@ -1,0 +1,13 @@
+sample_payload: 'sample_payload.json'
+EXPT_DIR : "./log"
+DATA_DIR : "./data"
+exp_name: "cifar-10"
+weightsclear: True
+
+### TRAIN FUNCTION ARGS ###
+onprem: True
+train_epochs: 100
+batch_size: 128
+lr: 0.1
+wtd: 0.0001
+momentum: 0.9
