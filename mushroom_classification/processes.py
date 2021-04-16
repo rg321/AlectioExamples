@@ -207,7 +207,7 @@ def infer(args, unlabeled, ckpt_file):
                     prediction = 1
                 predictions[unlabeled[predix]]["prediction"] = prediction
 
-                predictions[unlabeled[predix]]["pre_softmax"] = [
+                predictions[unlabeled[predix]]["logits"] = [
                     [
                         logit_fn(logit.cpu().numpy()[0]),
                         logit_fn(1 - logit.cpu().numpy()[0]),

@@ -5,17 +5,17 @@ MODEL_DIRECTORY : "./models"
 TRAINIMAGEDATA_DIR : "data/imgs/train/"
 TRAINLABEL_DIRECTORY : "data/masks/train_masks/"
 VALIMAGEDATA_DIR : "data/imgs/val/"
-VALLABEL_DIRECTORY : "data/masks/val_masks/"
+VALLABEL_DIRECTORY : "data/masks/train_masks/"
 TESTIMAGEDATA_DIR : "data/imgs/val/"
-TESTLABEL_DIRECTORY : "data/masks/val_masks/"
+TESTLABEL_DIRECTORY : "data/masks/train_masks/"
 WEIGHTS_DIR : "checkpoints/"
-EXP_NAME: "Deepweeds"
+EXP_NAME: "Carvana"
 
 
 
 ### TRAIN FUNCTION ARGS ###
-train_epochs: 5
-SAVE_PER_EPOCH : 2
+train_epochs: 1
+SAVE_PER_EPOCH : 1
 RAW_IMG_SIZE : (1918, 1280)
 IMG_SIZE : (1918, 1280)
 INPUT_SHAPE : (IMG_SIZE[0], IMG_SIZE[1], 3)

@@ -136,7 +136,7 @@ def infer(args, unlabeled, ckpt_file):
         for j in range(len(pred)):
             outputs_fin[i] = {}
             outputs_fin[i]["prediction"] = pred[j]
-            outputs_fin[i]["pre_softmax"] = [
+            outputs_fin[i]["logits"] = [
                 utils.logit(1 - tf.math.sigmoid(outputs[j])).numpy(),
                 outputs[j],
             ]

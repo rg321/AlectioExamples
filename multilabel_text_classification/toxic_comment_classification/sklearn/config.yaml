@@ -1,0 +1,3 @@
+EXPT_DIR : "./log"
+exp_name: "toxic-comment-classification"
+onprem: True

@@ -179,7 +179,7 @@ def infer(config_args, unlabeled, ckpt_file):
 
     outputs = {}
     for l in unlabeled:
-        outputs[l] = {"pre_softmax": d[l]}
+        outputs[l] = {"logits": d[l]}
 
     return {"outputs": outputs}
 

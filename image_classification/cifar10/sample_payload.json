@@ -1,0 +1,10 @@
+{  
+	"project_id": "adbc569e9c9511ea84dd0242ac110002",
+	"experiment_id": "cb09a5809c9511eaa1bf0242ac110002",
+    "cur_loop": 0,
+    "user_id": "8a90a570972811eaad5238c986352c36",
+    "type": "Classification",
+    "n_rec": 5000,
+    "n_loop": 10,
+    "bucket_name": "alectio-demo"
+}

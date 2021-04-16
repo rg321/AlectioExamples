@@ -205,7 +205,7 @@ def infer(args, unlabeled, ckpt_file):
                 predictions[unlabeled[predix]] = {}
 
                 class_probabilities = logit.cpu().numpy().tolist()
-                predictions[unlabeled[predix]]["pre_softmax"] = class_probabilities
+                predictions[unlabeled[predix]]["logits"] = class_probabilities
                 index_max = np.argmax(class_probabilities)
                 predictions[unlabeled[predix]]["prediction"] = index_max
                 predix += 1

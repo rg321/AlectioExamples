@@ -6,6 +6,9 @@ import torch
 from torch.utils.data import Dataset
 import logging
 from PIL import Image
+from PIL import ImageFile
+import os
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
 class BasicDataset(Dataset):
@@ -14,11 +17,17 @@ class BasicDataset(Dataset):
         self.masks_dir = masks_dir
         self.scale = scale
         assert 0 < scale <= 1, "Scale must be between 0 and 1"
-
-        self.ids = [
-            splitext(file)[0] for file in listdir(imgs_dir) if not file.startswith(".")
-        ]
-        logging.info(f"Creating dataset with {len(self.ids)} examples")
+        self.ids = []
+        for file_name in listdir(imgs_dir):
+            if not file_name.startswith("."):
+                idx = splitext(file_name)[0]
+                mask_file = glob(masks_dir + idx + "_mask.*")
+                img_file = glob(imgs_dir + idx + ".*")
+                if len(img_file) != len(mask_file):
+                    print("Removing files without masks ", img_file[0])
+                    os.remove(img_file[0])
+                else:
+                    self.ids.append(idx)
 
     def __len__(self):
         return len(self.ids)
@@ -46,19 +55,18 @@ class BasicDataset(Dataset):
         idx = self.ids[i]
         mask_file = glob(self.masks_dir + idx + "_mask.*")
         img_file = glob(self.imgs_dir + idx + ".*")
-
         assert (
             len(mask_file) == 1
-        ), f"Either no mask or multiple masks found for the ID {idx}: {mask_file}"
+        ), "Either no mask or multiple masks found for the ID {}: {}".format(idx, mask_file)
         assert (
             len(img_file) == 1
-        ), f"Either no image or multiple images found for the ID {idx}: {img_file}"
+        ), "Either no image or multiple images found for the ID {}: {}".format(idx, mask_file)
         mask = Image.open(mask_file[0])
         img = Image.open(img_file[0])
 
         assert (
             img.size == mask.size
-        ), f"Image and mask {idx} should be the same size, but are {img.size} and {mask.size}"
+        ), "Image and mask {} should be the same size, but are {} and {}".format(idx, img.size, mask.size)
 
         img = self.preprocess(img, self.scale)
         mask = self.preprocess(mask, self.scale)

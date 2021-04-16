@@ -132,7 +132,7 @@ scores (`List[float]`)
 >  A list of objectedness of each detected
    bounding box. Objectness should be in `[0, 1]`.
 
-pre_softmax (`List[List[float]]`):
+logits (`List[List[float]]`):
 > A list of logits for each of the
     detected bounding boxes before the final layer activation is applied.
 

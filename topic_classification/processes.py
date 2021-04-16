@@ -290,7 +290,7 @@ def infer(args, unlabeled, ckpt_file):
             for j in range(len(outputs)):
                 outputs_fin[unlabeled[k]] = {}
                 outputs_fin[unlabeled[k]]["prediction"] = predicted[j].item()
-                outputs_fin[unlabeled[k]]["pre_softmax"] = outputs[j].cpu().numpy()
+                outputs_fin[unlabeled[k]]["logits"] = outputs[j].cpu().numpy()
                 k += 1
 
     return {"outputs": outputs_fin}

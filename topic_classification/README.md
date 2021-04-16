@@ -90,7 +90,7 @@ outputs_fin = {}
 for j in range(len(outputs)):
     outputs_fin[j] = {}
     outputs_fin[j]["prediction"] = predicted[j].item()
-    outputs_fin[j]["pre_softmax"] = outputs[j].cpu().numpy()
+    outputs_fin[j]["logits"] = outputs[j].cpu().numpy()
 ```
 
 The above code block can be used as a template. Here, the returned items should be a dictionary with

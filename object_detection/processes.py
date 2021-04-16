@@ -276,10 +276,10 @@ def infer(args, unlabeled, ckpt_file):
             for i, logit in enumerate(presig):
                 true_mask = (logit[:, 4] >= 0.5).squeeze()
                 logit = logit[true_mask]
-                pre_softmax_np = logit[:, 5:].cpu().numpy()
+                logits_np = logit[:, 5:].cpu().numpy()
                 added_ind = unlabeled.pop(0)
                 # add row to db
-                add_index(conn, added_ind, pre_softmax_np)
+                add_index(conn, added_ind, logits_np)
 
     conn.close()
 

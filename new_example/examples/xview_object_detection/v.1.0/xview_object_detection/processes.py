@@ -286,7 +286,7 @@ def infer(args, unlabeled, ckpt_file):
                     logit = logit[true_mask]
                     predictions[predix] = {
                         "boxes": logit[:, :4].cpu().numpy().tolist(),
-                        "pre_softmax": logit[:, 5:].cpu().numpy().tolist(),
+                        "logits": logit[:, 5:].cpu().numpy().tolist(),
                         "scores": logit[:, 4].cpu().numpy().tolist(),
                     }
                     predix += 1

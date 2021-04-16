@@ -14,7 +14,7 @@ AlectioPipeline = Pipeline(
     infer_fn=infer,
     getstate_fn=getdatasetstate,
     args=args,
-    token="a0941db31c3f4c6fbf8d08b89556ba9d",
+    token="a5e7f39bb88e4d0c966cbd9df8d948ff",
 )
 
 if __name__ == "__main__":
