@@ -1,7 +1,7 @@
 import argparse
 import yaml, json
 import os
-from alectio_sdk.flask_wrapper import Pipeline
+from alectio_sdk.sdk import Pipeline
 from processes import train, test, infer, getdatasetstate
 import logging
 
@@ -41,7 +41,7 @@ app = Pipeline(
     infer_fn=infer,
     getstate_fn=getdatasetstate,
     args=args,
-    token='hPrjnEpRi0jLikGNNU8lIiCulCbdHAMJeIcBOc2XB4'
+    token='1a37ef028dfa4f9197899ac7db464b61'
 )
 
 if __name__ == "__main__":

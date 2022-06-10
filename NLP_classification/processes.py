@@ -7,11 +7,11 @@ import argparse
 
 # Add the hedwig repo to syspath
 cwd = os.path.dirname(os.path.abspath(__file__))
-syspath = os.path.join(cwd, "reuters_hedwig")
+syspath = os.path.join(cwd)
 sys.path.append(syspath)
 
 # Import the Bert model
-from reuters_hedwig.models.bert import __main__
+from hedwig.models.bert import __main__
 from models.bert.args import get_args
 
 
