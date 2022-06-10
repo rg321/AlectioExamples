@@ -15,19 +15,19 @@ parser.add_argument(
     help="Path to config.yaml",
 )
 
-parser.add_argument(
-    "--api_config",
-    default=os.path.join(cwd, "credentials.json"),
-    type=str,
-    help="Path to credentials.json",
-)
+# parser.add_argument(
+#     "--api_config",
+#     default=os.path.join(cwd, "credentials.json"),
+#     type=str,
+#     help="Path to credentials.json",
+# )
 
 args = parser.parse_args()
 
-with open(args.api_config, "r") as stream:
-    api_key = json.load(stream)["token"]
-    logging.info("Setting Alectio API key.")
-    os.environ["ALECTIO_API_KEY"] = api_key
+# with open(args.api_config, "r") as stream:
+#     api_key = json.load(stream)["token"]
+#     logging.info("Setting Alectio API key.")
+#     os.environ["ALECTIO_API_KEY"] = api_key
 
 with open(args.config, "r") as stream:
     args = yaml.safe_load(stream)
