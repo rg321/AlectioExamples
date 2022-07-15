@@ -28,11 +28,19 @@ First, point your terminal to the directory of this Readme file. Your terminal s
 ```bash 
 (env)$~/AlectioSDK/examples/NLP_classification
 ```
-Then, clone the `SDK_Reuters` branch of the topic classification repo. 
+Then, clone the `hedwig` repo, which contains our main model
 ```shell
-git clone --depth 1 -b SDK_Reuters --single-branch git@gitlab.com:AntonMu/reuters_hedwig.git
+git clone https://github.com/castorini/hedwig
 ```
-If successful, you should have a folder within your SDK repo called `reuters_hedwig`. It should look like this:
+
+For the latest changes (which are still not merged), fetch the pull request
+
+```shell
+git fetch origin pull/81/head:upgraded_for_transformers-4.19
+git checkout upgraded_for_transformers-4.19
+```
+
+If successful, you should have a folder within your SDK repo called `hedwig`. It should look like this:
 
 ```
 ├── examples
@@ -49,11 +57,49 @@ Then install pytorch with
 pip install torch==1.5.0+cu92 torchvision==0.6.0+cu92 -f https://download.pytorch.org/whl/torch_stable.html
 
 ```
-and then the remaining requirements via:
+
+then the remaining requirements. some of the dependencies are old, so lets make sure we install the latest-ones
+
+```shell
+sed -i -e 's/transformers==2.1.1/transformers/g' requirements.txt
+sed -i -e 's/numpy.*/numpy/g' requirements.txt
+sed -i -e 's/scikit-learn.*/scikit-learn/g' requirements.txt
+sed -i -e 's/scipy.*/scipy/g' requirements.txt
+````
+
 ```
-pip install -r reuters_hedwig/requirements.txt
+pip install -r requirements.txt
 ```
 
+Now download the Reuters, AAPD, and IMDB datasets, along with word2vec embeddings.
+```
+git clone https://git.uwaterloo.ca/jimmylin/hedwig-data.git
+```
+
+Cloning can take lot of time, so we will take a shortcut. We will download zip file from google-drive and unzip it. 
+
+install gdown to download zip file from google-drive
+
+```shell
+cd ..
+gdown 1qHgNuSMbDa8qETW_6SAKpLEQQG3JQY8H
+unzip hedwig-data.zip #unzip the downloaded file
+```
+
+Incase, you want to run and verify model without Alectio-sdk
+
+```shell
+cd hedwig
+python -m models.bert --dataset Reuters --model bert-base-uncased \  --max-seq-length 256 --batch-size 16 --lr 2e-5 --epochs 30
+```
+
+Now, reuters repo expects hedwig-data in parent folder, so create a symlink to hedwig-data from parent folder
+
+```shell
+cd /content/AlectioExamples
+ln -s NLP_classification/hedwig-data hedwig-data
+cd /content/AlectioExamples/NLP_classification
+```
 
 ### 4. Build Model
 We use the BERT topic classification model that is already implemented in the reuters-hedwig repo. 
